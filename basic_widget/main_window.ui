@@ -47,7 +47,11 @@
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout">
         <item>
-         <widget class="QLineEdit" name="input_line"/>
+         <widget class="QLineEdit" name="input_line">
+          <property name="placeholderText">
+           <string/>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="QPushButton" name="import_btn">
