@@ -1,5 +1,5 @@
 <div class="header">
-  <h1><img src="" alt="" />PySide2 Tutorial</h1>
+  <h1><img src="Py-128.png" alt="" />PySide2 Tutorial</h1>
 </div>
 
 <div align="left">
