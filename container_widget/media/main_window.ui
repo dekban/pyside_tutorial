@@ -15,7 +15,75 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="0">
+    <item row="5" column="4">
+     <widget class="QPushButton" name="exit_btn">
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>24</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Exit</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <spacer name="horizontalSpacer_4">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="5" column="3">
+     <widget class="QPushButton" name="submit_btn">
+      <property name="text">
+       <string>Submit</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QToolBox" name="tool_box">
+      <property name="maximumSize">
+       <size>
+        <width>150</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Plain</enum>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="tabSpacing">
+       <number>6</number>
+      </property>
+      <widget class="QWidget" name="widget">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>150</width>
+         <height>471</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string/>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="5">
      <widget class="QLabel" name="title">
       <property name="minimumSize">
        <size>
@@ -43,7 +111,7 @@
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
+    <item row="1" column="0" colspan="5">
      <widget class="QLabel" name="sub_title">
       <property name="minimumSize">
        <size>
@@ -68,40 +136,21 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="0">
-     <spacer name="horizontalSpacer_4">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
+    <item row="5" column="0">
+     <widget class="QDockWidget" name="dock_tool">
+      <property name="floating">
+       <bool>true</bool>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
+      <property name="features">
+       <set>QDockWidget::AllDockWidgetFeatures</set>
       </property>
-     </spacer>
-    </item>
-    <item row="4" column="1">
-     <widget class="QPushButton" name="submit_btn">
-      <property name="text">
-       <string>Submit</string>
+      <property name="windowTitle">
+       <string>Dock Example</string>
       </property>
+      <widget class="QWidget" name="dockWidgetContents_2"/>
      </widget>
     </item>
-    <item row="4" column="2">
-     <widget class="QPushButton" name="exit_btn">
-      <property name="maximumSize">
-       <size>
-        <width>80</width>
-        <height>24</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Exit</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0" colspan="3">
+    <item row="3" column="1" colspan="4">
      <widget class="QGroupBox" name="form_group">
       <property name="minimumSize">
        <size>
@@ -110,64 +159,32 @@
        </size>
       </property>
       <property name="title">
-       <string>Group Box</string>
+       <string>Stack Widget Group Box</string>
       </property>
-      <widget class="QDockWidget" name="dockWidget_2">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>30</y>
-         <width>901</width>
-         <height>121</height>
-        </rect>
+      <layout class="QGridLayout" name="gridLayout">
+       <property name="leftMargin">
+        <number>1</number>
        </property>
-       <property name="floating">
-        <bool>false</bool>
+       <property name="topMargin">
+        <number>1</number>
        </property>
-       <widget class="QWidget" name="dockWidgetContents_2"/>
-      </widget>
-      <widget class="QToolBox" name="toolBox">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>170</y>
-         <width>161</width>
-         <height>381</height>
-        </rect>
+       <property name="rightMargin">
+        <number>1</number>
        </property>
-       <property name="currentIndex">
-        <number>0</number>
+       <property name="bottomMargin">
+        <number>1</number>
        </property>
-       <property name="tabSpacing">
-        <number>6</number>
+       <property name="spacing">
+        <number>1</number>
        </property>
-       <widget class="QWidget" name="page">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>161</width>
-          <height>323</height>
-         </rect>
-        </property>
-        <attribute name="label">
-         <string>Page 1</string>
-        </attribute>
-       </widget>
-       <widget class="QWidget" name="page_2">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>161</width>
-          <height>323</height>
-         </rect>
-        </property>
-        <attribute name="label">
-         <string>Page 2</string>
-        </attribute>
-       </widget>
-      </widget>
+       <item row="0" column="0">
+        <widget class="QStackedWidget" name="stack_widget">
+         <property name="currentIndex">
+          <number>-1</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </item>
    </layout>
