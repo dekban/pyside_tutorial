@@ -19,7 +19,7 @@
   * Author : DekBan
   * Contact Me : [DekBan]
   * Document: 
-  * Git Clone : `$ git clone https://github.com/edwinlaiktc/pyside_tutorial.git`
+  * Git Clone : `$ https://github.com/dekban/pyside_tutorial.git`
 
 ### Release Note
 * Current Release : __v1.0.0__
