@@ -30,7 +30,7 @@ class MainWindow(object):
 
     def setup_ui(self):
         loader = QUiLoader()
-        file = QFile('./main_window.ui')
+        file = QFile('./user_interface/form/main_window.ui')
         file.open(QFile.ReadOnly)
         self._window = loader.load(file)
         file.close()
