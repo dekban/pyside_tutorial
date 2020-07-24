@@ -26,22 +26,9 @@ from PySide2.QtUiTools import QUiLoader
 from PySide2.QtWidgets import QListView, QListWidget, QListWidgetItem
 from PySide2.QtWidgets import QStatusBar, QWidget
 
-from basic_ui.user_interface.item_widget import ItemWidget
-from basic_ui.user_interface.text_page import TextPage
+from db_com.user_interface.utilities_widget import UtilWidget
 
 __copyright__ = 'Copyright © 2020 DekBan - All Right Reserved.'
-PLAY_TEXT = 'Music has been described as a universal language. Regardless of age, race, gender or culture,' \
-            ' most people feel some positive connection to it. But the impact of music isn’t just an emotional one.' \
-            ' Music has been found to be an effective tool in improving the quality of life for patients with' \
-            ' physical and mental illnesses. Studies show music therapy can ease anxiety, muscle tension, and' \
-            ' the unpleasant side effects of cancer treatment; help in pain relief and physical therapy and' \
-            ' rehabilitation; and provide safe emotional release and increased self-esteem.'
-PAUSE_TEXT = 'A week after mandating masks at all state facilities, troubling numbers prompted Utah Gov. Gary Herbert' \
-             ' to require masks in regions of Utah that are home to several of the state’s famous national parks' \
-             ' July 2. He announced a pause in reopening in June.'
-STOP_TEXT = 'WASHINGTON (Reuters) - U.S. infectious disease expert Anthony Fauci on Wednesday called the White House' \
-            ' effort to discredit him “bizarre” and urged an end to the divisiveness over the country’s response to' \
-            ' the coronavirus pandemic, saying “let’s stop this nonsense.”'
 
 
 class MainWindow(QObject):
@@ -70,12 +57,10 @@ class MainWindow(QObject):
         status_bar.showMessage(__copyright__)
         self._window.setStatusBar(status_bar)
         self._window.setWindowIcon(QIcon('./user_interface/media/bucketing_icon.jpeg'))
-        self._window.setWindowTitle('PySide2 Project - Basic UI Framework')
+        self._window.setWindowTitle('DekBan Comport')
 
         self._option_panel = OptionPanel()
         self._option_panel.add_button('DekBan', './user_interface/media/dekban.png')
-        self._option_panel.add_button('Charlie', './user_interface/media/charlie.jpeg')
-        self._option_panel.add_button('Simon', './user_interface/media/Simon.jpeg')
 
         # Add widget to main layout
         main_layout = self._window.main_layout
@@ -84,13 +69,11 @@ class MainWindow(QObject):
         main_layout.addWidget(self._option_panel, 2, 0, 1, 1)
 
         # Add page widget to stack
-        self._pages['item'] = ItemWidget()
-        self._pages['text1'] = TextPage(text=PAUSE_TEXT)
-        self._pages['text2'] = TextPage(text=STOP_TEXT)
+        self._pages['item'] = UtilWidget()
 
         for index, name in enumerate(self._pages):
             print('pages {} : {} page'.format(index, name))
-            self._window.widget_stack.addWidget(self._pages[name].widget)
+            self._window.widget_stack.addWidget(self._pages[name])
 
         self._window.widget_stack.setCurrentIndex(0)
 
