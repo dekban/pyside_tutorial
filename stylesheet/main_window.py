@@ -120,12 +120,10 @@ class MainWindow(object):
         """Setup buttons"""
         self._window.color_btn.setText('Choose Font')
         self._window.exit_btn.setText('Exit')
-        self._window.palette_btn.setText('Set Font')
 
         self._window.color_btn.setIcon(QIcon('./media/font.png'))
 
         self._window.color_btn.clicked.connect(self.choose_font)
-        self._window.palette_btn.clicked.connect(self.set_palette)
         self._window.exit_btn.clicked.connect(self.exit)
 
     def set_edits(self):
