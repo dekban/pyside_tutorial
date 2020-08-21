@@ -4,7 +4,7 @@ from PySide2 import QtCore
 from PySide2.QtCore import Qt, QObject
 from PySide2.QtCore import QFile
 from PySide2.QtUiTools import QUiLoader
-from PySide2.QtWidgets import QSystemTrayIcon, QMenu, QDesktopWidget, QTextEdit
+from PySide2.QtWidgets import QSystemTrayIcon, QMenu, QDesktopWidget
 from PySide2.QtGui import QFont, QIcon
 
 
@@ -87,7 +87,6 @@ class MainWindow(QObject):
 
     def set_icon_combo(self):
         """Setup options in icon select combobox."""
-        # self._window.icon_combo = QComboBox()
         self._window.icon_combo.addItem(QIcon('./media/font.png'), 'font')
         self._window.icon_combo.addItem(QIcon('./media/paint.png'), 'paint')
         self._window.icon_combo.addItem(QIcon('./media/dekban.png'), 'default')
