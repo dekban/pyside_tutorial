@@ -1,15 +1,12 @@
 #!venv/bin/python3
 
-import logging
-from datetime import datetime
-
 from PySide2 import QtCore
 from PySide2.QtCore import Qt
-from PySide2.QtCore import QFile
+from PySide2.QtCore import QFile, QTime, QTimer
 from PySide2.QtUiTools import QUiLoader
 from PySide2.QtGui import QFont
 
-from logging_textedit.logger import setup_loggers, add_text_handler
+from clock_time.analog_clock import AnalogClock
 
 
 class MainWindow(object):
@@ -24,14 +21,10 @@ class MainWindow(object):
           None
         """
         self._window = None
+        self._analog_clock = None
+        self._clock_timer = QTimer()
 
         self.setup_ui()
-        self.set_logger()
-
-        logging.debug('this is debug level')
-        logging.info('this is info level')
-        logging.warning('this is warning level')
-        logging.error('this is error level')
 
     @property
     def window(self):
@@ -47,6 +40,11 @@ class MainWindow(object):
 
         self.set_title()
         self.set_buttons()
+        self.set_clock()
+        self.set_time_edit()
+        self.set_lcd()
+
+        self._clock_timer.timeout.connect(self.update_clock)
 
     def set_title(self):
         """Setup label"""
@@ -68,13 +66,32 @@ class MainWindow(object):
 
         self._window.exit_btn.clicked.connect(self.exit)
 
-    def set_logger(self):
-        now = datetime.now().strftime('%Y%m%d')
-        print(setup_loggers(now))
-        add_text_handler(self.logger_callback)
+    def set_time_edit(self):
+        time_edit = self._window.time_edit
+        time_edit.setMaximumTime(QTime(18, 0, 0))
+        time_edit.setMinimumTime(QTime(8, 0, 0))
+        time_edit.setDisplayFormat('hh:mm:ss.zzz')
 
-    def logger_callback(self, msg):
-        self._window.log_text.append(msg)
+    def set_lcd(self):
+        lcd = self._window.lcd
+        lcd.setDecMode()
+
+        self._clock_timer.start(1000)
+
+    def set_clock(self):
+        self._analog_clock = AnalogClock(self._window, 500)
+        self._window.v_layout.addWidget(self._analog_clock)
+
+    @QtCore.Slot()
+    def update_clock(self):
+        time = QTime.currentTime()
+        s_time = time.toString('hh:mm')
+
+        if time.second() % 2 == 0:
+            s_time = s_time.replace(':', '.')
+
+        self._window.lcd.display(s_time)
+        self._analog_clock.time = time
 
     @QtCore.Slot()
     def exit(self):
