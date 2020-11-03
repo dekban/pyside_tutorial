@@ -1,14 +1,15 @@
 #!venv/bin/python3
 
-import logging
 import sys
+import logging
 
 from PySide2.QtWidgets import QApplication
 
-from clock_time.main_window import MainWindow
+from logging_text.main_window import MainWindow
 
 if '__main__' == __name__:
     app = QApplication(sys.argv)
+    logging.basicConfig(level=logging.DEBUG)
 
     mainwindow = MainWindow()
     mainwindow.window.show()
